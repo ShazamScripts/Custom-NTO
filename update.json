@@ -1,0 +1,10 @@
+{
+  "version": "2.3.14",
+  "required": false,
+  "title": "Atualizador por commit",
+  "notes": "Updater agora detecta qualquer commit novo no GitHub automaticamente, sem precisar editar a versao manualmente.",
+  "updateMode": "download-on-start-install-on-next-start",
+  "repository": "https://github.com/ShazamScripts/Custom-NTO",
+  "manifest": "https://raw.githubusercontent.com/ShazamScripts/Custom-NTO/main/update.json",
+  "tree": "https://api.github.com/repos/ShazamScripts/Custom-NTO/git/trees/main?recursive=1"
+}

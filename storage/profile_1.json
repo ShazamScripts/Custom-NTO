@@ -1,0 +1,726 @@
+{
+  "DIST_ID": 3067,
+  "configMystic": {
+    "defenseCooldown": 1000,
+    "defenseTime": 0,
+    "kaiTime": 0,
+    "kaiCooldown": 1000,
+    "macroActive": false,
+    "enabledKai": false,
+    "defenseSpell": "Mystic Defense",
+    "kaiCast": 80,
+    "defenseCast": 50,
+    "kaiSpell": "Mystic Kai"
+  },
+  "tyrFriendlist": [
+
+  ],
+  "pillContent": "Nhack Nhack",
+  "comboLeader": {
+    "macroActive": false,
+    "leaders": [
+
+    ]
+  },
+  "scrollBars": {
+    "manaPotion": 100,
+    "regenPercent": 100,
+    "delayMana": 300,
+    "delayHealth": 200,
+    "macroDelay": 200,
+    "healthPotion": 60,
+    "distanceKunai": 6
+  },
+  "_enemy": [
+
+  ],
+  "changeWeapon": false,
+  "pvpPanel": {
+    "avoidEffects": false,
+    "holdMw": false,
+    "mwCursor": false,
+    "mwAtras": false,
+    "mwallFrente": true,
+    "mwWgTimer": false,
+    "openMainBag": false,
+    "mwId": 12105,
+    "useMwMouse": true,
+    "openNextBag": false
+  },
+  "ES_Spells": [
+    {
+      "active": 2,
+      "cooldown": 45,
+      "enabled": true,
+      "spell": "kawarimi no jutsu",
+      "nickname": "Kawarimi"
+    }
+  ],
+  "checkBoxs": {
+    "castFood": false,
+    "battleFilter": false,
+    "useKunai": false,
+    "healthPotion": true
+  },
+  "rtsFollow": "Patolino",
+  "erase": 1787832346,
+  "widgetPos": {
+    "pkTimeWidget": {
+      "y": 143,
+      "x": 878
+    },
+    "DamageScreen": {
+      "y": 247,
+      "x": 530
+    },
+    "pvpButton": {
+      "y": 295,
+      "x": 1148
+    }
+  },
+  "_macros": {
+    "": true,
+    "Summon": false,
+    "Jump on Walk": true,
+    "Invitar PT": false,
+    "Auto Jump": true,
+    "Escadas": true,
+    "Sense": true,
+    "Aceitar PT": false,
+    "Bug Map": false
+  },
+  "sealedTypes": [
+
+  ],
+  "ES": false,
+  "castFoodSpell": "shokuji no jutsu",
+  "battleFilter": {
+    "hidePlayers": false,
+    "hideSkulls": false,
+    "hideNPCs": true,
+    "hideMonsters": true,
+    "hideFriends": true
+  },
+  "ES_Pos": {
+    "y": 95,
+    "x": 1310
+  },
+  "_icons": {
+    "cI": {
+      "y": 0.28341232227488,
+      "x": 0.52994652406417
+    },
+    "8": {
+      "y": 0.05,
+      "x": 0.01,
+      "enabled": true
+    },
+    "tI": {
+      "y": 0.28341232227488,
+      "x": 0.50053475935829
+    },
+    "comboup": {
+      "y": 0.73913043478261,
+      "x": 0.57112299465241,
+      "enabled": false
+    },
+    "bugMapKunai": {
+      "y": 0.7768115942029,
+      "x": 0.55187165775401,
+      "enabled": false
+    },
+    "frontal": {
+      "y": 0.05,
+      "x": 0.01,
+      "enabled": false
+    },
+    "SUMMON": {
+      "y": 0.77874396135266,
+      "x": 0.52352941176471,
+      "enabled": false
+    },
+    "shazamTarget": {
+      "y": 0.1294343240652,
+      "x": 0.6695464362851
+    },
+    "shazamCave": {
+      "y": 0.12751677852349,
+      "x": 0.64254859611231
+    },
+    "4": {
+      "y": 0.65217391304348,
+      "x": 0.64438502673797,
+      "enabled": false
+    }
+  },
+  "scriptsArea": "---------------------------------------------------------------------------------------\nlocal summonName = 'Shazam'\nlocal summonMagia = 'Bunshin no Jutsu'\n\nsummonName = summonName:lower():trim()\n\nsummonMagia = summonMagia:lower():trim()\n\nsummon = false\n\nonTalk(function(name, level, mode, text, channelId, pos)\n    if player:getName() ~= name then return end\n    \n    text = text:lower()\n    if text == 'kai' then\n        summon = true\n    elseif text == summonMagia then\n        summon = false\n    end\nend)\n\n\nMacro2 = macro(1, 'Summon', function()\n    if summonTime and summonTime >= now then return end\n    for _, creature in ipairs(getSpectators(true)) do\n        if creature:isMonster() and creature:getName():lower() == summonName and creature:getHealthPercent() > 20 then\n            summon = false\n            summonTime = now + 2000\n            return\n        end\n    end\n    if summon then\n        return say(summonMagia)\n    else\n        return say('kai')\n    end\nend)\n\ntest1 = addIcon(\"SUMMON\", {item = 3028, text = \"SUMMON\"}, Macro2 )\ntest1:breakAnchors()\ntest1:move(70, 70)\n\n\n---------------------------------------------------------------------------------------\n\nsprh = macro(100, \"esconder sprite\", function() end)\nonAddThing(function(tile, thing)\n    if sprh.isOff() then return end\n    if thing:isEffect() then\n        if thing.setOpacity then\n            thing:setOpacity(0.3)\n        else\n            thing:hide() -- fallback pro comportamento antigo\n        end\n    end\nend)\n",
+  "comboConfig": {
+    "fist_cooldown": 1100,
+    "spells": {
+      "Combo 1": [
+        {
+          "enabled": true,
+          "spellName": "yasaka takemikazuchi",
+          "index": 1
+        },
+        {
+          "enabled": true,
+          "spellName": "amaterasuu",
+          "index": 2
+        },
+        {
+          "enabled": true,
+          "spellName": "takemikazuchi no jutsu",
+          "index": 3
+        }
+      ],
+      "Combo 4": [
+
+      ],
+      "Combo 3": [
+        {
+          "enabled": true,
+          "cooldownTotal": 2000,
+          "index": 1,
+          "orangeMsg": "sansai no jutsu",
+          "distance": 10,
+          "cooldownTime": 927.622,
+          "spellName": "sansai no jutsu"
+        },
+        {
+          "enabled": true,
+          "cooldownTotal": 2000,
+          "index": 2,
+          "orangeMsg": "magen hanagasumi",
+          "distance": 10,
+          "cooldownTime": 928.445,
+          "spellName": "magen hanagasumi"
+        },
+        {
+          "enabled": true,
+          "cooldownTotal": 2000,
+          "index": 3,
+          "orangeMsg": "kaki buyou",
+          "distance": 10,
+          "cooldownTime": 927.001,
+          "spellName": "kaki buyou"
+        },
+        {
+          "enabled": true,
+          "cooldownTotal": 2000,
+          "index": 4,
+          "orangeMsg": "magen hiei no jutsu",
+          "distance": 10,
+          "cooldownTime": 927.413,
+          "spellName": "magen hiei no jutsu"
+        }
+      ],
+      "Combo 5": [
+
+      ],
+      "Combo 2": [
+
+      ]
+    },
+    "fist_dmg": {
+      "min": 48,
+      "max": 997
+    },
+    "enabled": false,
+    "selected_type": "Combo 1"
+  },
+  "trainerData": {
+    "checkRegen": false,
+    "manaPercent": 50,
+    "checkPotion": true,
+    "spellTraining": "Powerdown",
+    "spellRegen": "",
+    "enabled": false
+  },
+  "kunaiKey": "F11",
+  "pillDelay": 0,
+  "manaPotionId": 11863,
+  "rtsFollowEnabled": true,
+  "foodItems": [
+    {
+      "id": 3577,
+      "count": 1
+    }
+  ],
+  "buffConfig": {
+    "Shazam": {
+      "macroActive": false
+    },
+    "Problema Seu": {
+      "macroActive": false
+    }
+  },
+  "taskData": [
+
+  ],
+  "buyAol": false,
+  "lastAttackerPanel": {
+    "pos": {
+      "y": 396,
+      "x": 1117
+    },
+    "enabled": true
+  },
+  "looting": {
+    "items": [
+
+    ],
+    "status": true,
+    "only_ok": true,
+    "containers": [
+
+    ],
+    "loot_all": true
+  },
+  "ES_Players": [
+
+  ],
+  "hasteSpell": "Concentrate Chakra feet",
+  "pillId": 11821,
+  "regenSpell": "Big Regeneration",
+  "battleTracking": [
+    0,
+    268438694,
+    [
+
+    ]
+  ],
+  "bijuuRegen": "bijuu regeneration",
+  "attackEnemy": {
+    "macroActive": false,
+    "friends": [
+
+    ]
+  },
+  "TravelSystem": {
+    "sasuke": {
+      "cities": [
+        "Amegakure",
+        "Iwagakure",
+        "Kirigakure",
+        "Konohagakure",
+        "Kumogakure",
+        "Shimogakure",
+        "Sunagakure",
+        "Takigakure",
+        "Tanigakure"
+      ],
+      "index": 2,
+      "talkActions": [
+        "hi",
+        "viajar"
+      ]
+    },
+    "active": true
+  },
+  "stackConfig": {
+    "stackSpell": "Magen jubaku no jutsu",
+    "macroActive": false,
+    "maxDistance": 10
+  },
+  "kunaiId": 3260,
+  "config": {
+    "followTarget": {
+      "actionKey": "Tab",
+      "iconId": 28
+    },
+    "stairs": {
+      "iconId": 56,
+      "actionKey": "Space"
+    },
+    "comboLeader": {
+      "iconId": 28
+    },
+    "mystic": {
+      "iconId": 89
+    },
+    "enemy": {
+      "iconId": 46
+    },
+    "jumpOnWalk": {
+      "iconId": 85,
+      "actionKey": "_"
+    },
+    "followFriend": {
+      "iconId": 65
+    },
+    "bugMap": {
+      "iconId": 16,
+      "extra": {
+        "Right": "D",
+        "Left": "A",
+        "Up": "W",
+        "Down": "S"
+      }
+    },
+    "especiais": {
+      "iconId": 80
+    },
+    "sense": {
+      "iconId": 19,
+      "extra": {
+        "senseTarget": "T",
+        "senseLast": "V"
+      }
+    },
+    "antiTrap": {
+      "iconId": 79
+    },
+    "push": {
+      "iconId": 79
+    },
+    "combo": {
+      "iconId": 28
+    },
+    "keepTarget": {
+      "iconId": 38,
+      "actionKey": "Escape"
+    },
+    "jump": {
+      "actionKey": "F",
+      "iconId": 83,
+      "extra": {
+        "jumpUp": "Insert",
+        "removePosition": "Delete",
+        "jumpDown": "Delete",
+        "saveDown": "PageDown",
+        "saveUp": "PageUp"
+      }
+    }
+  },
+  "senseNames": {
+    "targetName": "Triickziin",
+    "lastName": "Malpa"
+  },
+  "shazamHpBarPosition": [
+
+  ],
+  "stairsIds": [
+    {
+      "id": 1666,
+      "count": 1
+    },
+    {
+      "id": 6207,
+      "count": 1
+    },
+    {
+      "id": 1948,
+      "count": 1
+    },
+    {
+      "id": 435,
+      "count": 1
+    },
+    {
+      "id": 7771,
+      "count": 1
+    },
+    {
+      "id": 5542,
+      "count": 1
+    },
+    {
+      "id": 8657,
+      "count": 1
+    },
+    {
+      "id": 6264,
+      "count": 1
+    },
+    {
+      "id": 1646,
+      "count": 1
+    },
+    {
+      "id": 1648,
+      "count": 1
+    },
+    {
+      "id": 1678,
+      "count": 1
+    },
+    {
+      "id": 5291,
+      "count": 1
+    },
+    {
+      "id": 1680,
+      "count": 1
+    },
+    {
+      "id": 6905,
+      "count": 1
+    },
+    {
+      "id": 6262,
+      "count": 1
+    },
+    {
+      "id": 1664,
+      "count": 1
+    },
+    {
+      "id": 13296,
+      "count": 1
+    },
+    {
+      "id": 1067,
+      "count": 1
+    },
+    {
+      "id": 13861,
+      "count": 1
+    },
+    {
+      "id": 11931,
+      "count": 1
+    },
+    {
+      "id": 1949,
+      "count": 1
+    },
+    {
+      "id": 6896,
+      "count": 1
+    },
+    {
+      "id": 6205,
+      "count": 1
+    },
+    {
+      "id": 13926,
+      "count": 1
+    },
+    {
+      "id": 1947,
+      "count": 1
+    },
+    {
+      "id": 12097,
+      "count": 1
+    },
+    {
+      "id": 615,
+      "count": 1
+    },
+    {
+      "id": 1678,
+      "count": 1
+    },
+    {
+      "id": 8367,
+      "count": 1
+    }
+  ],
+  "comboup_data": {
+    "areaSpells": [
+      {
+        "enabled": true,
+        "cooldownTotal": 0,
+        "spellName": "Chidori nagashi"
+      }
+    ],
+    "distance": 10,
+    "enabled": true,
+    "amountOfMonsters": 2,
+    "comboSpells": [
+      {
+        "enabled": true,
+        "cooldownTotal": 0,
+        "spellName": "Yasaka takemikazuchi"
+      },
+      {
+        "enabled": true,
+        "cooldownTotal": 0,
+        "spellName": "Amaterasuu"
+      },
+      {
+        "enabled": true,
+        "cooldownTotal": 0,
+        "spellName": "Takemikazuchi no jutsu"
+      }
+    ]
+  },
+  "mwPos": [
+
+  ],
+  "buyBless": false,
+  "FollowPlayerName": "Ximba",
+  "bijuuBuff": "bijuu yaiba",
+  "especiaisConfig": {
+    "attackers": [
+
+    ],
+    "spells": {
+      "Stack": [
+
+      ],
+      "Outros": [
+
+      ],
+      "Fugas": [
+        {
+          "orangeMsg": "kawarimi no jutsu",
+          "type": "Fugas",
+          "spellTime": 1,
+          "cooldownTotal": 45,
+          "spellName": "kawarimi no jutsu",
+          "showMsg": "kawarimi no jutsu",
+          "pos": {
+            "y": 252,
+            "x": 663
+          },
+          "enabled": true,
+          "index": 1,
+          "activeTotal": 2,
+          "percent": 30
+        }
+      ],
+      "Buffs": [
+        {
+          "type": "Buffs",
+          "cooldownTotal": 60,
+          "spellName": "susano yasaka",
+          "showMsg": "susano yasaka",
+          "key": "AUTO",
+          "orangeMsg": "susano yasaka",
+          "index": 1,
+          "activeTotal": 60,
+          "enabled": true,
+          "cooldownTime": 1788626204,
+          "activeTime": 1788626204
+        }
+      ],
+      "Retas": [
+
+      ],
+      "Traps": [
+
+      ]
+    },
+    "showInfo": true,
+    "battlePos": {
+      "y": 122,
+      "x": 864
+    },
+    "enabled": true,
+    "selected_type": "Outros"
+  },
+  "caveBotTasker": {
+    "max": 0,
+    "monster": "",
+    "inProgress": false,
+    "count": 0,
+    "taskName": ""
+  },
+  "saveJumps": true,
+  "attackingPlayers": [
+
+  ],
+  "rtsFollowSystem": {
+    "enabled": false
+  },
+  "excludeIds": [
+    {
+      "id": 12099,
+      "count": 1
+    },
+    {
+      "id": 17393,
+      "count": 1
+    }
+  ],
+  "mouseShortcuts_data": {
+    "entries": [
+      {
+        "button": 8,
+        "enabled": true,
+        "spellName": "Izanami"
+      }
+    ],
+    "enabled": false
+  },
+  "bijuuOutfit": 0,
+  "ignoringFunctions": [
+
+  ],
+  "ptSystem": {
+    "aceitar": false,
+    "invitar": false
+  },
+  "storageTrainer": {
+    "enableWebHook": false,
+    "changeItemOrSpell": false,
+    "trainerPhrase": "",
+    "spellTrain": "",
+    "modeTrainer": false,
+    "attackTrainer": false,
+    "itemId": 0,
+    "percentTrain": 90,
+    "trainerName": "",
+    "enableChannel": false,
+    "spellRecover": "",
+    "playersScreen": false,
+    "macroEnabled": false,
+    "lowCpu": false,
+    "WebHookText": "",
+    "modeHunt": false,
+    "showSkills": false,
+    "autoWalk": false
+  },
+  "attackingFunctions": [
+
+  ],
+  "task": [
+
+  ],
+  "guild": {
+    "monitored": [
+
+    ],
+    "macroConfig": false,
+    "monitorActive": false,
+    "webhook": "",
+    "lastState": [
+
+    ]
+  },
+  "healthPotionId": 23504,
+  "CLOSE_ID": 3281,
+  "alarms": {
+    "privateMessage": false,
+    "creatureDetected": false,
+    "playerDetectedLogout": false,
+    "playerAttack": false,
+    "manaBelow": false,
+    "playerDetected": false,
+    "manaValue": 50,
+    "enabled": false,
+    "healthBelow": false,
+    "healthValue": 40
+  },
+  "castFood": false,
+  "_sense_spell": "Sense",
+  "_configs": {
+    "cavebot_configs": {
+      "enabled": true,
+      "selected": "Shinobi_of_The_Blades"
+    },
+    "targetbot_configs": {
+      "enabled": true,
+      "selected": "Asterisco"
+    }
+  },
+  "_custom_img_name": "minato",
+  "autoKaiConfig": {
+    "macroActive": false,
+    "requestKai": false,
+    "kaiExhaust": 1788619652
+  }
+}
